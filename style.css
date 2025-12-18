@@ -1,0 +1,372 @@
+/* 
+  Main Stylesheet
+  Author: Johanna Hahlin
+  Last updated: 2025-12-01
+  Purpose: General styling for website, including layout, typography, responsive design, and visual elements.
+*/
+
+/* ----------------------------------------------------------
+  Fonts
+---------------------------------------------------------- */
+
+@font-face {
+  font-family: "Roboto";
+  src: url("fonts/Roboto-Regular.woff2") format("woff2"), url("fonts/Roboto-Regular.woff") format("woff"),
+    url("fonts/Roboto-Regular.ttf") format("truetype");
+}
+
+/* ----------------------------------------------------------
+  Global reset
+  Remove default margins/padding and use border-box for predictable sizing.
+---------------------------------------------------------- */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: arial, sans-serif;
+  background-color: white;
+}
+
+/* Wrapper for website content, centers page and limits width */
+.wrapper {
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Main website container */
+main {
+  background-color: darkgrey;
+  display: flex;
+  flex-direction: column;
+  /* stack main sections vertically */
+}
+
+h1 {
+  color: black;
+  text-align: left;
+  font-family: "Roboto", Arial;
+  font-size: 1.4rem;
+  /* rem unit to make it more scalable */
+}
+
+p {
+  font-size: 1rem;
+  /* standard paragraph size for readability */
+}
+
+/* ----------------------------------------------------------
+  Navigation
+  Flex layout for menu items, with hover/active visual feedback.
+---------------------------------------------------------- */
+nav {
+  display: flex;
+  background-color: #1f1f1f;
+  /* dark navigation to contrast the rest of the page */
+  padding: 0 2rem;
+}
+
+/* Navigation links */
+nav a {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  padding: 1rem;
+  font-family: "Roboto", Arial;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Hover effect */
+nav a:hover {
+  background-color: darkgrey;
+  color: black;
+}
+
+/* Active effect */
+nav a:active {
+  color: white;
+}
+
+/* ----------------------------------------------------------
+  About section
+  Layout for biography and photo, with responsive adjustments.
+---------------------------------------------------------- */
+
+.section-about {
+  padding: 1rem 3rem 2rem 3rem;
+}
+
+.section-about p {
+  max-width: 300px;
+}
+
+.section-about .about-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.section-about img {
+  max-width: 200px;
+  height: auto;
+}
+
+/* Styled table */
+th {
+  font-size: 1rem;
+  text-align: left;
+}
+
+td {
+  border: 1px solid;
+  padding: 0.4rem;
+}
+
+tr {
+  font-size: 0.9rem;
+}
+
+/* ----------------------------------------------------------
+  Interests section
+  List and photo gallery with labels.
+---------------------------------------------------------- */
+
+.section-interests {
+  padding: 1rem 3rem 2rem 3rem;
+}
+
+/* Styled unordered list */
+ul {
+  padding: 0 0 0.5rem 1.5rem;
+}
+
+ul li {
+  margin: 0.3rem;
+}
+
+/* Photographs in flexible layout with captions */
+.photos {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.img-container {
+  position: relative;
+  display: inline-block;
+}
+
+.img-container img {
+  display: block;
+  width: 100%;
+  max-height: 1000px;
+  /* prevent differentiating height on images */
+}
+
+.img-label {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  color: white;
+  font-size: 0.9rem;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+
+/* ----------------------------------------------------------
+  Goals section
+---------------------------------------------------------- */
+.section-goals {
+  padding: 1rem 3rem 2rem 3rem;
+}
+
+.section-goals p {
+  max-width: 75%;
+}
+
+/* ----------------------------------------------------------
+  Contact section
+  Form styling with clear labels and focus effects.
+---------------------------------------------------------- */
+.section-contact {
+  padding: 1rem 3rem 2rem 3rem;
+  background-color: lightgrey;
+  /* visually separates from other sections */
+}
+
+/* Form */
+form {
+  display: flex;
+  max-width: 500px;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+label {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 0.12rem;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid #d0d0d0;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background: white;
+}
+
+/* Highlight input on focus for accessibility */
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  border-color: black;
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.1);
+  background: white;
+  outline: none;
+}
+
+/* Submit button styling with hover/active feedback */
+input[type="submit"] {
+  font-size: 1rem;
+  padding: 0.75rem;
+  border: none;
+  background: #1f1f1f;
+  color: white;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background: #333;
+}
+
+input[type="submit"]:active {
+  transform: scale(0.98);
+  /* feedback when clicking */
+}
+
+/* ----------------------------------------------------------
+  Footer
+  Simple layout with hover effects for interactivity.
+---------------------------------------------------------- */
+
+footer {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  background: #1f1f1f;
+  color: white;
+  font-size: 0.9rem;
+  padding: 2rem;
+}
+
+footer p {
+  cursor: pointer;
+}
+
+footer p:hover {
+  text-decoration: underline;
+  color: darkgrey;
+}
+
+footer p:active {
+  transform: scale(0.98);
+}
+
+/* ----------------------------------------------------------
+  Responsive design
+  Adjust layout for different screen sizes.
+---------------------------------------------------------- */
+
+/* Desktop */
+@media (max-width: 1025px) {
+  .section-about img {
+    max-width: 100%;
+    /* images scale with container */
+  }
+}
+
+/* Tablet */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .section-about .about-content {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: 1rem;
+  }
+
+  .section-about img {
+    max-width: 200px;
+  }
+
+  .section-about p {
+    max-width: 70%;
+    text-align: left;
+  }
+
+  .photos {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .img-container {
+    width: 100%;
+  }
+}
+
+/* Smartphone */
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    text-align: center;
+    padding: 0;
+  }
+
+  nav a {
+    padding: 0.8rem;
+    border-bottom: 1px solid darkgrey;
+  }
+
+  .section-about .about-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .section-about img {
+    max-width: 200px;
+  }
+
+  .section-about p {
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .photos {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .img-container {
+    width: 100%;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Examinationsuppgift" />
+		<meta name="author" content="Johanna Hahlin" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Enhanced Personal Profile</title>
+		<!-- CSS reset -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div class="wrapper">
+			<!-- Simple navigation with links -->
+			<nav>
+				<a href="#about">About</a>
+				<a href="#interests">Interests</a>
+				<a href="#goals">Goals</a>
+				<a href="#contact">Contact</a>
+				<a href="http://google.se" target="_blank">External page</a>
+			</nav>
+			<main>
+				<!-- Section 1: About -->
+				<section class="section-about" id="about">
+					<h1>About Me</h1>
+					<div class="about-content">
+						<img src="images/portfolio_portrait1.jpg" alt="Me at my office" />
+						<p>
+							My name is Johanna and I grew up in a small forest town in the north west of Sweden. One of my fondest childhood memories
+							is when I got my first PC, and not long after that, created my first website using basic HTML.
+						</p>
+						<!-- Table for quick facts -->
+						<table>
+							<th>Quick Facts</th>
+							<tr>
+								<td><b>Profession</b></td>
+								<td>Communication manager</td>
+							</tr>
+							<tr>
+								<td><b>City</b></td>
+								<td>Älvdalen</td>
+							</tr>
+							<tr>
+								<td><b>Favourite tool</b></td>
+								<td>VS Code</td>
+							</tr>
+						</table>
+					</div>
+				</section>
+
+				<!-- Section 2: Interests -->
+				<section class="section-interests" id="interests">
+					<h1>Interests & Hobbies</h1>
+					<ul>
+						<li>Photography - A way to express myself without using words</li>
+						<li>Web design - An outlet for my creatitivy</li>
+						<li>Coding - Challenging myself by learning new things</li>
+					</ul>
+
+					<!-- Container for Photographs -->
+					<div class="photos">
+						<div class="img-container">
+							<img src="images/photo_winter.jpg" alt="Winter landscape with snow covered trees" />
+							<span class="img-label">Winter landscape with snow covered trees.</span>
+						</div>
+						<div class="img-container">
+							<img src="images/photo_fire.jpg" alt="Open fire in the forest" />
+							<span class="img-label">Open fire in the forest.</span>
+						</div>
+					</div>
+				</section>
+
+				<!-- Section 3: Goals -->
+				<section class="section-goals" id="goals">
+					<h1>Future Goals</h1>
+					<p>
+						One of my main goals is to build a solid foundation in web development by learning the core technologies—HTML, CSS, and
+						JavaScript—and understanding how they work together to create clean, functional, and user-friendly websites.
+					</p>
+				</section>
+
+				<!-- Section 4: Contact -->
+				<section class="section-contact" id="contact">
+					<h1>Contact Me</h1>
+					<!-- Form to send message, using mailto -->
+					<form action="mailto:johahlin@gmail.com" method="post" enctype="text/plain">
+						<label for="fname">Name</label>
+						<input type="text" id="fname" name="fname" />
+						<label for="email">Email</label>
+						<input type="email" id="email" name="email" />
+						<label for="message">Message</label>
+						<textarea name="message"> </textarea>
+						<input type="submit" value="Submit" />
+					</form>
+				</section>
+			</main>
+			<footer>
+				<p>Contact</p>
+				<p>© 2025 Johanna Hahlin. All rights reserved.</p>
+				<p>Privacy Policy</p>
+			</footer>
+		</div>
+	</body>
+</html>
