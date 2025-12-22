@@ -82,18 +82,18 @@
 
 				<!-- Section 4: Contact -->
 				<section class="section-contact" id="contact">
-					<h1>Contact Me</h1>
-					<!-- Form to send message, using mailto -->
-					<form action="mailto:johahlin@gmail.com" method="post" enctype="text/plain">
-						<label for="fname">Name</label>
-						<input type="text" id="fname" name="fname" />
-						<label for="email">Email</label>
-						<input type="email" id="email" name="email" />
-						<label for="message">Message</label>
-						<textarea name="message"> </textarea>
-						<input type="submit" value="Submit" />
-					</form>
+					<div id="contact-section"></div>
 				</section>
+				<script>
+					fetch("contact.html")
+						.then((response) => response.text())
+						.then((data) => {
+							document.getElementById("contact-section").innerHTML = data;
+							initContactForm();
+						})
+						.catch((error) => console.error("Error loading contact form:", error));
+				</script>
+				<script src="contact.js"></script>
 			</main>
 			<footer>
 				<p>Contact</p>
