@@ -219,6 +219,7 @@ label {
 
 input[type="text"],
 input[type="email"],
+input[type="tel"],
 textarea {
   width: 100%;
   padding: 0.75rem 0.9rem;
@@ -231,6 +232,7 @@ textarea {
 /* Highlight input on focus for accessibility */
 input[type="text"]:focus,
 input[type="email"]:focus,
+input[type="tel"]:focus,
 textarea:focus {
   border-color: black;
   box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.1);
@@ -239,7 +241,8 @@ textarea:focus {
 }
 
 /* Submit button styling with hover/active feedback */
-input[type="submit"] {
+input[type="submit"],
+input[type="reset"] {
   font-size: 1rem;
   padding: 0.75rem;
   border: none;
@@ -249,13 +252,29 @@ input[type="submit"] {
   cursor: pointer;
 }
 
-input[type="submit"]:hover {
-  background: #333;
+input[type="reset"] {
+  background: #1f1f1f;
 }
 
-input[type="submit"]:active {
-  transform: scale(0.98);
-  /* feedback when clicking */
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+  background: #2f2f2f;
+}
+
+input.error,
+textarea.error {
+  border-color: #dc3545;
+}
+
+input.valid,
+textarea.valid {
+  border-color: green;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 0.85rem;
+  transition: opacity 0.3s ease;
 }
 
 /* ----------------------------------------------------------
