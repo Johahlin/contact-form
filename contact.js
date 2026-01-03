@@ -136,11 +136,17 @@ function initContactForm() {
     return isValid;
   }
   // -------------------------------
-  // Clear form function
+  // Clear form function.
   // -------------------------------
 
   function clearForm() {
-    form.reset();
+    if (!form) return;
+
+    const fields = form.querySelectorAll("input[type='text'], input[type='email'], input[type='tel'], textarea");
+    fields.forEach(field => {
+      field.value = "";
+      field.style.borderColor = "";
+    });
 
     // Reset character counter.
     if (charCounter) {
@@ -148,15 +154,14 @@ function initContactForm() {
       charCounter.style.color = "";
     }
 
-    // Remove error messages.
+    // Reset subject dropdown.
+    if (subject) {
+      subject.selectedIndex = 0;
+    }
+
+    // Remove all error messages.
     const errors = form.querySelectorAll(".error-message");
     errors.forEach(error => error.remove());
-
-    // Reset input borders.
-    const fields = form.querySelectorAll("input, textarea");
-    fields.forEach(field => {
-      field.style.borderColor = "";
-    });
   }
 
   // -------------------------------
@@ -176,18 +181,30 @@ function initContactForm() {
       event.preventDefault();
 
       if (validateForm()) {
+        // Show success message
         successMessage.textContent = `Thank you ${fname.value}! I will get back to you soon.`;
+        successMessage.style.opacity = "1";
+
         clearForm();
 
+        // Fade out success message after 3 seconds.
         setTimeout(() => {
-          successMessage.textContent = "";
+          successMessage.style.opacity = "0";
+          setTimeout(() => { successMessage.textContent = ""; }, 500);
         }, 3000);
       }
     });
   }
+
+  // -------------------------------
+  // Reset button handler.
+  // -------------------------------
   if (form) {
-    form.addEventListener("reset", () => {
+    form.addEventListener("reset", (event) => {
+      event.preventDefault();
+
       clearForm();
+
     });
   }
 

@@ -277,6 +277,19 @@ textarea.valid {
   transition: opacity 0.5s ease;
 }
 
+#successMessage {
+  margin-top: 1rem;
+  /* space above buttons */
+  font-weight: bold;
+  color: black;
+  opacity: 0;
+  /* start hidden */
+  transition: opacity 0.5s ease;
+  /* smooth fade in/out */
+  min-height: 1.5em;
+  /* reserve vertical space so layout doesn’t jump */
+}
+
 /* ----------------------------------------------------------
   Footer
   Simple layout with hover effects for interactivity.
