@@ -20,6 +20,7 @@ function initContactForm() {
   // -------------------------------
   // Real-time character counter for message field.
   // -------------------------------
+
   // Safety check to ensure elements exist before using them.
   if (message && charCounter) {
     message.addEventListener("input", () => {
@@ -49,30 +50,45 @@ function initContactForm() {
   }
 
   // -------------------------------
-  // Show / clear error
+  // Show / clear error.
   // -------------------------------
   function showError(input, message) {
+    // Highlight the input border in red to indicate an error.
     input.style.borderColor = "#dc3545";
 
+    // Find the next sibling element and check if it's an error message.
     let error = input.nextElementSibling;
     if (!error || !error.classList.contains("error-message")) {
+      // If not, create a new div and add the error-message class.
       error = document.createElement("div");
       error.classList.add("error-message");
+      // Insert the error message directly after the input.
       input.after(error);
     }
+    // Set the text of the error message.
     error.textContent = message;
   }
 
+  // Clear the error message for a specific input field.
   function clearError(input) {
+    // Highlight the input border in green to indicate valid input.
     input.style.borderColor = "green";
+
+    // Find the next sibling element and check if it's an error message.
     const error = input.nextElementSibling;
     if (error && error.classList.contains("error-message")) {
-      error.remove();
+      // Fade out the error message using CSS opacity.
+      error.style.opacity = "0";
+
+      // Remove the element from the DOM after the fade-out completes.
+      setTimeout(() => {
+        if (error.parentNode) error.remove();
+      }, 500); // 500ms matches the CSS transition.
     }
   }
 
   // -------------------------------
-  // Reusable form validation
+  // Reusable form validation.
   // -------------------------------
   function validateForm() {
     let isValid = true;
@@ -122,16 +138,29 @@ function initContactForm() {
   // -------------------------------
   // Clear form function
   // -------------------------------
+
   function clearForm() {
     form.reset();
+
+    // Reset character counter.
     if (charCounter) {
       charCounter.textContent = "0 / 20 characters";
-      charCounter.style.color = "red";
+      charCounter.style.color = "";
     }
+
+    // Remove error messages.
+    const errors = form.querySelectorAll(".error-message");
+    errors.forEach(error => error.remove());
+
+    // Reset input borders.
+    const fields = form.querySelectorAll("input, textarea");
+    fields.forEach(field => {
+      field.style.borderColor = "";
+    });
   }
 
   // -------------------------------
-  // Blur event listeners (instant feedback)
+  // Blur event listeners (instant feedback).
   // -------------------------------
   if (fname) fname.addEventListener("blur", () => validateName(fname.value) ? clearError(fname) : showError(fname, "First name must contain only letters."));
   if (lname) lname.addEventListener("blur", () => validateName(lname.value) ? clearError(lname) : showError(lname, "Last name must contain only letters."));
@@ -140,7 +169,7 @@ function initContactForm() {
   if (message) message.addEventListener("blur", () => validateMessage(message.value) ? clearError(message) : showError(message, "Message must be at least 20 characters long."));
 
   // -------------------------------
-  // Submit handler
+  // Submit handler.
   // -------------------------------
   if (form) {
     form.addEventListener("submit", (event) => {
@@ -156,12 +185,17 @@ function initContactForm() {
       }
     });
   }
+  if (form) {
+    form.addEventListener("reset", () => {
+      clearForm();
+    });
+  }
 
   // -------------------------------
-  // Debug log
+  // Debug log.
   // -------------------------------
   console.log("Form initialized:", form, fname, lname, email, phone, subject, message);
 }
 
-// Ensure the DOM is fully loaded before initializing form
+// Ensure the DOM is fully loaded before initializing form.
 document.addEventListener("DOMContentLoaded", initContactForm);
