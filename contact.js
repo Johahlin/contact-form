@@ -1,6 +1,8 @@
 // -------------------------------------------
-// Contact Form JS
-// Handles form validation, character counter, and submission
+// Contact Form JS.
+// Author: Johanna Hahlin
+// Last updated: 2026-01-04
+// Purpose: Handle contact form validation, real-time feedback, and user interaction.
 // -------------------------------------------
 
 function initContactForm() {
@@ -21,7 +23,7 @@ function initContactForm() {
   // Real-time character counter for message field.
   // -------------------------------
 
-  // Safety check to ensure elements exist before using them.
+  // Safety check to ensure the elements exist before adding event listeners.
   if (message && charCounter) {
     message.addEventListener("input", () => {
       const len = message.value.length;
@@ -135,6 +137,7 @@ function initContactForm() {
 
     return isValid;
   }
+
   // -------------------------------
   // Clear form function.
   // -------------------------------
@@ -142,6 +145,7 @@ function initContactForm() {
   function clearForm() {
     if (!form) return;
 
+    // Select all text-based inputs and textarea for reset.
     const fields = form.querySelectorAll("input[type='text'], input[type='email'], input[type='tel'], textarea");
     fields.forEach(field => {
       field.value = "";
@@ -181,7 +185,7 @@ function initContactForm() {
       event.preventDefault();
 
       if (validateForm()) {
-        // Show success message
+        // Show success message.
         successMessage.textContent = `Thank you ${fname.value}! I will get back to you soon.`;
         successMessage.style.opacity = "1";
 
@@ -207,11 +211,6 @@ function initContactForm() {
 
     });
   }
-
-  // -------------------------------
-  // Debug log.
-  // -------------------------------
-  console.log("Form initialized:", form, fname, lname, email, phone, subject, message);
 }
 
 // Ensure the DOM is fully loaded before initializing form.
