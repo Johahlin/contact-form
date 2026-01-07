@@ -1,7 +1,7 @@
 // -------------------------------------------
 // Contact Form JS.
 // Author: Johanna Hahlin
-// Last updated: 2026-01-04
+// Last updated: 2026-01-07
 // Purpose: Handle contact form validation, real-time feedback, and user interaction.
 // -------------------------------------------
 
@@ -28,7 +28,7 @@ function initContactForm() {
     message.addEventListener("input", () => {
       const len = message.value.length;
       charCounter.textContent = `${len} / 20 characters`;
-      charCounter.style.color = len >= 20 ? "green" : "red";
+      charCounter.style.color = len === 20 ? "green" : "red";
     });
   }
 
@@ -48,7 +48,7 @@ function initContactForm() {
   }
 
   function validateMessage(msg) {
-    return msg.trim().length >= 20;
+    return msg.trim().length <= 20 && msg.trim().length > 0;
   }
 
   // -------------------------------
@@ -129,7 +129,7 @@ function initContactForm() {
 
     // Validate message when user leaves the textarea.
     if (!validateMessage(message.value)) {
-      showError(message, "Message must be at least 20 characters long.");
+      showError(message, "Message must be 20 characters or less.");
       isValid = false;
     } else {
       clearError(message);
@@ -175,7 +175,7 @@ function initContactForm() {
   if (lname) lname.addEventListener("blur", () => validateName(lname.value) ? clearError(lname) : showError(lname, "Last name must contain only letters."));
   if (email) email.addEventListener("blur", () => validateEmail(email.value) ? clearError(email) : showError(email, "Please enter a valid email address."));
   if (phone) phone.addEventListener("blur", () => validatePhone(phone.value) ? clearError(phone) : showError(phone, "Phone number must be 7–15 digits."));
-  if (message) message.addEventListener("blur", () => validateMessage(message.value) ? clearError(message) : showError(message, "Message must be at least 20 characters long."));
+  if (message) message.addEventListener("blur", () => validateMessage(message.value) ? clearError(message) : showError(message, "Message must be 20 characters or less."));
 
   // -------------------------------
   // Submit handler.
