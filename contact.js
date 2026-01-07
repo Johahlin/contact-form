@@ -28,7 +28,8 @@ function initContactForm() {
     message.addEventListener("input", () => {
       const len = message.value.length;
       charCounter.textContent = `${len} / 20 characters`;
-      charCounter.style.color = len === 20 ? "green" : "red";
+      // Green for 0-20 characters, red otherwise.
+      charCounter.style.color = len <= 20 ? "green" : "red";
     });
   }
 
